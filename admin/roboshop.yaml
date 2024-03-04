@@ -18,7 +18,7 @@ metadata:
 subjects:
 # You can specify more than one "subject"
 - kind: User
-  name: ramesh # "name" is case sensitive
+  name: ramesh # "name" is case sensitive, this should exist in IAM
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   # "roleRef" specifies the binding to a Role / ClusterRole
@@ -26,7 +26,7 @@ roleRef:
   name: roboshop-pod-reader # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io
 ---
-  apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   # "namespace" omitted since ClusterRoles are not namespaced
@@ -39,7 +39,7 @@ rules:
   resources: ["secrets","nodes","persistentvolumes"]
   verbs: ["get", "watch", "list"]
 ---
-  apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: rbac.authorization.k8s.io/v1
 # This cluster role binding allows anyone in the "manager" group to read secrets in any namespace.
 kind: ClusterRoleBinding
 metadata:
